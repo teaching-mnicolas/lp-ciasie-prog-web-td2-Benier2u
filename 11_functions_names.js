@@ -4,21 +4,21 @@ describe ("Function Name", function() {
     function f() {
       return 1;
     };
-    expect(__).toEqual(1);      // call directly f()
+    expect(f()).toEqual(1);      // call directly f()
   });
 
   it ("can have a property 'name'", function() {
     function f() {
       return 1;
     };
-    expect(__).toEqual("f");    // check the name property of f
+    expect(f.name).toEqual("f");    // check the name property of f
   });
 
   it ("have a property 'name' by default if assigned to a variable", function() {
     let f = function() {
       return 1;
     };
-    expect(__).toEqual("f");     // check the name property of f
+    expect(f['name']).toEqual("f");     // check the name property of f
   });
 
   it ("is problematic to use var name in recursion", function() {
@@ -55,7 +55,7 @@ describe ("Function Name", function() {
   });
 
   it ("is hoisted", function() {
-    let a = __;               // call f() here, even if it's not yet defined
+    let a = f();               // call f() here, even if it's not yet defined
     function f() {
       return 1;
     };
